@@ -1,0 +1,14 @@
+# Secrets — never commit your API key
+.streamlit/secrets.toml
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
