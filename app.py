@@ -700,7 +700,7 @@ def main():
     )
 
     # ---- Auto-refresh every hour (3 600 000 ms) ----
-    refresh_count = st_autorefresh(interval=3_600_000, key="hourly_refresh")
+    refresh_count = st_autorefresh(interval=1_800_000, key="hourly_refresh")
 
     # ---- Session state init ----
     for key, default in [
@@ -764,13 +764,13 @@ def main():
         with status_col:
             if st.session_state.last_refresh:
                 elapsed  = int((datetime.now() - st.session_state.last_refresh).total_seconds())
-                next_min = max(0, 60 - elapsed // 60)
+                next_min = max(0, 30 - elapsed // 60)
                 st.caption(
                     f"Last refreshed: {st.session_state.last_refresh.strftime('%H:%M:%S')}  \n"
                     f"Next auto-refresh in: ~{next_min} min"
                 )
             else:
-                st.caption("Auto-refresh: every 1 hour")
+                st.caption("Auto-refresh: every 30 minutes")
 
         manual_vals = render_sidebar()
 
